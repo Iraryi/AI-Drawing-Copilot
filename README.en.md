@@ -18,7 +18,7 @@ The problem is rarely that AI cannot render the requested subjects. The problem 
 
 | Region composition | Result guided by relationship constraints |
 | --- | --- |
-| ![Region composition](docs/images/02-composition-map.png) | ![Result guided by relationship constraints](docs/images/04-relation-guided-result.png) |
+| ![Region composition](docs/images/02-composition-map.png) | ![Result guided by relationship constraints](docs/images/03-coordinate-prompt-limit.png) |
 
 In the example above, region 3 is a river and region 10 is a rice field. The application describes their frame occupancy, relative direction, adjacency, and the river's overall route instead of merely exporting coordinates.
 
@@ -65,7 +65,7 @@ A position map can tell a model what belongs in each area, but it does not guara
 
 | Common drift | More severe structural failure |
 | --- | --- |
-| ![Composition drift despite a position guide](docs/images/03-coordinate-prompt-limit.png) | ![Severe structural failure](docs/images/05-coordinate-prompt-failure.png) |
+| ![Composition drift despite a position guide](docs/images/04-relation-guided-result.png) | ![Severe structural failure](docs/images/05-coordinate-prompt-failure.png) |
 
 AI Drawing Copilot cannot remove the image model's own limitations, but it makes the constraints explicit: do not swap left and right or top and bottom; do not remove adjacency, containment, or overlap; do not reverse layer order; do not move the main body to the opposite side of the frame; and do not arbitrarily straighten, shift, or reroute elongated regions such as rivers, roads, walls, and ridgelines.
 
