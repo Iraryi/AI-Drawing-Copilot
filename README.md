@@ -1,14 +1,20 @@
+<div align="center">
+  <strong>简体中文</strong> · <a href="./README.en.md">English</a>
+</div>
+
 # AI Drawing Copilot / AI 作图副驾驶
 
-> 把“某个区域在什么坐标”转换成生图模型更容易遵守的自然语言构图关系。
+> **别再让生图模型猜你的构图。先把空间关系算清楚，再把图交给 AI。**
 
 [![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-2563eb)](https://github.com/Iraryi/AI-Drawing-Copilot/releases/latest)
 [![Release](https://img.shields.io/badge/download-latest%20installer-22c55e)](https://github.com/Iraryi/AI-Drawing-Copilot/releases/latest)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-f5c542)](https://www.python.org/)
 
-AI Drawing Copilot 是一款本地 Windows 构图工具。你可以在画布上划出天空、河流、城堡、麦田等语义区域，填写它们是什么；程序再计算区域之间的左右、上下、邻接、包含、交叠、图层、距离、画幅占位及长条走向，并将结果写成强制性的自然语言构图说明。
+AI Drawing Copilot 不是另一个生图模型，而是位于**区域草图与生图模型之间的构图约束层**。你在画布上划出天空、河流、城堡、麦田等语义区域，程序负责计算它们之间的左右、上下、邻接、包含、交叠、图层、距离、画幅占位及长条走向，再把这些几何事实转换成明确、可检查、尽量不容忽略的自然语言构图要求。
 
-现阶段的生图模型通常不能仅凭坐标文件精确复现构图。它们真正能够理解并尝试遵守的，仍然是自然语言。本项目的重点不是把坐标原样交给 AI，而是尽可能准确地把几何关系翻译成人能读、AI 也更容易理解的描述。
+它解决的不是“AI 不会画”，而是“AI 会画，却总把主体挪位、交换左右、改掉河流走向或破坏区域关系”。现阶段的生图模型通常不能仅凭坐标文件精确复现构图；本项目因此不把坐标原样丢给 AI，而是先用程序穷举并分析全部区域关系，再交付人能读、AI 也更容易执行的构图说明。
+
+`区域草图 → 程序计算空间关系 → 强制构图说明与视觉索引 → 生图模型`
 
 | 区域构图 | 关系描述引导后的结果 |
 | --- | --- |
@@ -101,9 +107,3 @@ powershell -ExecutionPolicy Bypass -File scripts\build_exe.ps1
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts\build_installer.ps1
 ```
-
-## English summary
-
-AI Drawing Copilot is a local Windows composition tool that converts drawn semantic regions into mandatory natural-language spatial constraints. It analyzes pairwise direction, adjacency, containment, overlap, layer order, distance, whole-frame occupancy, edge anchors, and elongated routes. The default indirect workflow asks a code-capable AI to create an underpaint first and wait for a separate “Continue” message before final image generation.
-
-The workflow has currently been tested only with ChatGPT 5.5. Image-only models may be tested experimentally with the Weak AI export, which contains only PNG and TXT files.
