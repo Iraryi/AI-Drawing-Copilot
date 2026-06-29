@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.spec
+
+build/
+dist/
+TEST/
+
+.agents/
+.codex/
+.venv/
+venv/
+
+data/
+portable.mode
+*.aipilot.json
